@@ -1,0 +1,47 @@
+﻿<Window x:Class="Scheduling_Solution.AddEditAppointment"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Scheduling_Solution"
+        mc:Ignorable="d"
+        Title="Add Appointment" Height="652" Width="1079">
+    <Grid>
+        <Label Content="Select Customer" HorizontalAlignment="Left" Margin="40,19,0,0" VerticalAlignment="Top"/>
+        <DataGrid x:Name="dgrdCustomerList" HorizontalAlignment="Left" Height="185" Margin="40,45,0,0"  AlternatingRowBackground="AliceBlue" VerticalAlignment="Top" Width="950" IsReadOnly="True" ItemsSource="{Binding}" AutoGenerateColumns="False" SelectionMode="Single" Loaded="DgrdCustomerList_Loaded">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding CustomerName}" Width="150" Header="Name"/>
+                <DataGridTextColumn Binding="{Binding Address.Address1}" Width="200" Header="Address"/>
+                <DataGridTextColumn Binding="{Binding Address.Address2}" Width="100" Header="Address 2"/>
+                <DataGridTextColumn Binding="{Binding Address.City.CityName}" Width="140" Header="City"/>
+                <DataGridTextColumn Binding="{Binding Address.Phone}" Width="*" Header="Phone"/>
+            </DataGrid.Columns>
+            <DataGrid.Resources>
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Blue"/>
+                <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="Green"/>
+            </DataGrid.Resources>
+        </DataGrid>
+        <Label Content="Start Time" HorizontalAlignment="Left" Margin="40,234,0,0" VerticalAlignment="Top"/>
+        <DatePicker x:Name="dpStart"  HorizontalAlignment="Left" Margin="40,260,0,0" VerticalAlignment="Top" SelectedDateFormat="Long" Width="170"/>
+        <ComboBox x:Name="cmbbxStartTime" HorizontalAlignment="Left" Margin="225,260,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="End Time" HorizontalAlignment="Left" Margin="360,235,0,0" VerticalAlignment="Top" RenderTransformOrigin="4.365,0.615"/>
+        <DatePicker x:Name="dpEnd" HorizontalAlignment="Left" Margin="360,258,0,0" VerticalAlignment="Top" SelectedDateFormat="Long" Width="170"/>
+        <ComboBox x:Name="cmbbxEndTime" HorizontalAlignment="Left" Margin="545,260,0,0" VerticalAlignment="Top" Width="135"/>
+        <Label Content="Customer's Time Zone" HorizontalAlignment="Left" Margin="702,235,0,0" VerticalAlignment="Top" RenderTransformOrigin="4.365,0.615"/>
+        <ComboBox x:Name="cmbbxTimeZone" HorizontalAlignment="Left" Margin="702,260,0,0" VerticalAlignment="Top" Width="285" ItemsSource="{Binding}"/>
+        <Label Content="Title" HorizontalAlignment="Left" Margin="40,300,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtbxTitle" HorizontalAlignment="Left" Height="23" Margin="40,326,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="275"/>
+        <Label Content="Contact" HorizontalAlignment="Left" Margin="350,300,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtbxContact" HorizontalAlignment="Left" Height="23" Margin="350,326,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="275"/>
+        <Label Content="Location" HorizontalAlignment="Left" Margin="645,300,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtbxLocation" HorizontalAlignment="Left" Height="23" Margin="645,326,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="345"/>
+        <Label Content="Description" HorizontalAlignment="Left" Margin="40,364,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtbxDescription" HorizontalAlignment="Left" Height="90" Margin="40,390,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="950" AcceptsReturn="True" AcceptsTab="True"/>
+        <Label Content="URL" HorizontalAlignment="Left" Margin="40,489,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtbxURL" HorizontalAlignment="Left" Height="23" Margin="40,515,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="640"/>
+        <Label Content="Appointment Type" HorizontalAlignment="Left" Margin="702,490,0,0" VerticalAlignment="Top" RenderTransformOrigin="4.365,0.615"/>
+        <ComboBox x:Name="cmbxAppointmentType" HorizontalAlignment="Left" Margin="702,515,0,0" VerticalAlignment="Top" Width="285" ItemsSource="{Binding Path=Description}" DisplayMemberPath="Description" Loaded="CmbxAppointmentType_Loaded"/>
+        <Button x:Name="btnOk" Content="Ok" HorizontalAlignment="Left" Margin="810,565,0,0" VerticalAlignment="Top" Width="75" Click="BtnOk_Click"/>
+        <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="915,565,0,0" VerticalAlignment="Top" Width="75" Click="BtnCancel_Click"/>
+    </Grid>
+</Window>

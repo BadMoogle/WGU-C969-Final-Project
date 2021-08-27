@@ -1,0 +1,18 @@
+﻿<Window x:Class="Scheduling_Solution.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:p = "clr-namespace:Scheduling_Solution.Properties"
+        xmlns:local="clr-namespace:Scheduling_Solution"
+        mc:Ignorable="d"
+        Title="{x:Static p:Resources.SchedulingLogin}" Height="401.748" Width="424.476" ResizeMode="NoResize" ContentRendered="Window_ContentRendered">
+    <Grid>
+        <Label Content="{x:Static p:Resources.UserID}" HorizontalAlignment="Left" Margin="78,75,0,0" VerticalAlignment="Top" Width="201"/>
+        <TextBox x:Name="txtbxUserID" HorizontalAlignment="Left" Height="23" Margin="83,106,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="245" KeyDown="TxtbxUserID_KeyDown"/>
+        <Label Content="{x:Static p:Resources.Password}" HorizontalAlignment="Left" Margin="78,151,0,0" VerticalAlignment="Top" Width="201"/>
+        <PasswordBox x:Name="txtbxPassword" HorizontalAlignment="Left" Height="23" Margin="83,182,0,0" VerticalAlignment="Top" Width="245" KeyDown="TxtbxPassword_KeyDown"/>
+        <Button x:Name="btnLogin" Content="{x:Static p:Resources.Login}" HorizontalAlignment="Left" Margin="115,244,0,0" VerticalAlignment="Top" Width="96" Click="BtnLogin_Click"/>
+        <Button x:Name="btnExit" Content="{x:Static p:Resources.Exit}" HorizontalAlignment="Left" Margin="232,244,0,0" VerticalAlignment="Top" Width="96" Click="BtnExit_Click"/>
+    </Grid>
+</Window>

@@ -1,0 +1,60 @@
+﻿<Window x:Name="WndMainWindow" x:Class="Scheduling_Solution.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Scheduling_Solution"
+        xmlns:p = "clr-namespace:Scheduling_Solution.Properties"
+        mc:Ignorable="d"
+        Title="{x:Static p:Resources.SchedulingSolution}" Height="666.846" Width="1068.907" ResizeMode="NoResize">
+    <Window.Resources>
+        <CollectionViewSource x:Key="ItemCollectionViewSource" CollectionViewType="ListCollectionView"/>
+    </Window.Resources>
+    <Grid>
+        <Menu IsMainMenu="True" >
+            <MenuItem Header="{x:Static p:Resources.File}">
+                <MenuItem Header="{x:Static p:Resources.AddAppointment}" Click="mnuFileAppointments_Click" />
+                <MenuItem Header="{x:Static p:Resources.AddCustomer}" Click="mnuFileCustomers_Click" />
+                <Separator />
+                <MenuItem Header="{x:Static p:Resources.Exit}" Click="mnuFileExit_Click" />
+            </MenuItem>
+            <MenuItem Header="{x:Static p:Resources.Reporting}">
+                <MenuItem Header="{x:Static p:Resources.AppointmentType}" Click="mnuReportingAppointmentType_Click" />
+                <MenuItem Header="{x:Static p:Resources.NumberofAppointmentTypesbyMonth}" Click="mnuReportingNumAppointTypeByMonth_Click" />
+                <MenuItem Header="{x:Static p:Resources.ContactSchedule}" Click="mnuReportingContactSchedule_Click" />
+                <MenuItem Header="{x:Static p:Resources.AppointmentsByCountry}" Click="mnuReportingAppointmentsByCountry_Click" />
+                <Separator />
+                <MenuItem Header="{x:Static p:Resources.CustomerList}" Click="mnuReportingCustomerList_Click"/>
+            </MenuItem>
+        </Menu>
+        <DataGrid x:Name="dgrdAppointments" Margin="465,68,38,124" AlternatingRowBackground="AliceBlue" ItemsSource="{Binding}" SelectionMode="Single" CanUserResizeRows="False" AutoGenerateColumns="False" IsReadOnly="True" SelectionChanged="DgrdAppointments_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="{x:Static p:Resources.StartTime}" Binding="{Binding Start}" Width="130"/>
+                <DataGridTextColumn Header="{x:Static p:Resources.EndTime}" Binding="{Binding End}" Width="130"/>
+                <DataGridTextColumn Header="{x:Static p:Resources.CustomerName}" Binding="{Binding CustomerName}" Width="140"/>
+                <DataGridTextColumn Header="{x:Static p:Resources.Contact}" Binding="{Binding Contact}" Width="*"/>
+            </DataGrid.Columns>
+            <DataGrid.Resources>
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Blue"/>
+                <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="Green"/>
+            </DataGrid.Resources>
+        </DataGrid>
+        <Viewbox Margin="30,68,654,288">
+            <Calendar x:Name="cldCalendar" SelectedDatesChanged="CldCalendar_SelectedDatesChanged" SelectionMode="MultipleRange" />
+        </Viewbox>
+        <Label Content="{x:Static p:Resources.AppointmentsOnDate}" HorizontalAlignment="Left" Margin="65,42,0,0" VerticalAlignment="Top" Width="140"/>
+        <Label Content="{x:Static p:Resources.Appointments}" HorizontalAlignment="Left" Margin="465,42,0,0" VerticalAlignment="Top" Width="140"/>
+        <Button x:Name="btnAddAppointment" Content="{x:Static p:Resources.Add}" Height="30" Margin="465,515,479,75" Click="BtnAddAppointment_Click"/>
+        <Button x:Name="btnEditAppointment" Content="{x:Static p:Resources.Edit}" Height="30" Width="95" Margin="585,515,359,75" IsEnabled="False" Click="BtnEditAppointment_Click"/>
+        <Button x:Name="btnDeleteAppointment" Content="{x:Static p:Resources.Delete}" Height="30" Width="95" Margin="700,515,244,75" IsEnabled="False" Click="BtnDeleteAppointment_Click"/>
+        <Label Content="{x:Static p:Resources.TimeZone}" HorizontalAlignment="Left" Margin="65,364,0,0" VerticalAlignment="Top" Width="140"/>
+        <ComboBox x:Name="cmbxTimezone" Margin="65,390,698,213" ItemsSource="{Binding}" SelectionChanged="CmbxTimezone_SelectionChanged"/>
+        <CheckBox x:Name="chxbxDaylightSavings" Content="{x:Static p:Resources.IsSelectedDateInDaylightSavingsTime}" Margin="65,445,698,169" IsEnabled="False"/>
+        <Label Content="Date Selection Mode:" HorizontalAlignment="Left" Margin="65,474,0,0" VerticalAlignment="Top" Width="140"/>
+        <ComboBox x:Name="cmbxDateSelectionMode" Margin="65,500,698,103" IsReadOnly="True" SelectedIndex="0" SelectionChanged="CmbxDateSelectionMode_SelectionChanged">
+            <ListBoxItem Content="{x:Static p:Resources.SingleDate}"/>
+            <ListBoxItem Content="{x:Static p:Resources.Week}"/>
+            <ListBoxItem Content="{x:Static p:Resources.Month}"/>
+        </ComboBox>
+    </Grid>
+</Window>

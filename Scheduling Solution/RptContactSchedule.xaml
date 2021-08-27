@@ -1,0 +1,25 @@
+﻿<Window x:Class="Scheduling_Solution.RptContactSchedule"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Scheduling_Solution"
+        xmlns:p = "clr-namespace:Scheduling_Solution.Properties"
+        mc:Ignorable="d"
+        Title="Contact Schedule" Height="557" Width="1099" ResizeMode="NoResize">
+    <Grid>
+        <Label Content="Select the Contact from the List" HorizontalAlignment="Left" Margin="40,20,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="cmbxContact" HorizontalAlignment="Left" Margin="40,51,0,0" VerticalAlignment="Top" Width="235" SelectionChanged="CmbxContact_SelectionChanged" />
+        <DataGrid x:Name="dgrdAppointmentList" HorizontalAlignment="Left" Height="340" Margin="40,95,0,0" VerticalAlignment="Top" Width="1025" IsReadOnly="True" AutoGenerateColumns="False" AlternatingRowBackground="AliceBlue">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="{x:Static p:Resources.StartTime}" Binding="{Binding Start}" Width="130"/>
+                <DataGridTextColumn Header="{x:Static p:Resources.EndTime}" Binding="{Binding End}" Width="130"/>
+                <DataGridTextColumn Header="{x:Static p:Resources.CustomerName}" Binding="{Binding AssociatedCustomer.CustomerName}" Width="140"/>
+                <DataGridTextColumn Header="{x:Static p:Resources.Location}" Binding="{Binding Location}" Width="140"/>
+                <DataGridTextColumn Header="{x:Static p:Resources.URL}" Binding="{Binding Url}" Width="*"/>
+                <DataGridTextColumn Header="{x:Static p:Resources.Description}" Binding="{Binding Description}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="btnClose" Content="Close" HorizontalAlignment="Left" Margin="950,480,0,0" VerticalAlignment="Top" Width="75" Click="BtnClose_Click"/>
+    </Grid>
+</Window>
